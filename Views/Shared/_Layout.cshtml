@@ -1,49 +1,133 @@
-﻿<!DOCTYPE html>
+﻿@* /Views/Shared/_Layout.cshtml *@
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - AdminLTE_DB</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/AdminLTE_DB.styles.css" asp-append-version="true" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - Osama Store</title>
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: #f5f5f5;
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            background: #0b1e3b;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 24px;
+            z-index: 100;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        header nav button {
+            margin-left: 10px;
+            padding: 6px 14px;
+            border: none;
+            border-radius: 8px;
+            background-color: #4fc3f7;
+            color: #0b1e3b;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        header nav button:hover {
+            background-color: #29b6f6;
+        }
+
+        /* Layout */
+        .container {
+            display: flex;
+            flex: 1;
+            background: #f5f5f5;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 220px;
+            background: linear-gradient(#0b1e3b, #000);
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .sidebar a {
+            color: #4fc3f7;
+            text-decoration: none;
+            padding: 10px 12px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #1a2a4a;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            background: linear-gradient(#f9f9f9, #e0e0e0);
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: #ccc;
+            text-align: center;
+            padding: 12px;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">AdminLTE_DB</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+<header>
+    <h1>Osama Store</h1>
+    <nav>
+        <button>Home</button>
+        <button>About</button>
+        <button>Contact</button>
+    </nav>
+</header>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2025 - AdminLTE_DB - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+<div class="container">
+    <aside class="sidebar">
+        <a asp-controller="Home" asp-action="Index">Home</a>
+        <a asp-controller="Shop" asp-action="Index">Shop</a>
+        <a asp-controller="Services" asp-action="Index">Services</a>
+        <a href="#">Offers</a>
+        <a href="#">Contact</a>
+    </aside>
+
+    <main class="main-content">
+        @RenderBody()
+    </main>
+</div>
+
+<footer>
+    © 2025 Osama Store. All rights reserved.
+</footer>
 </body>
 </html>

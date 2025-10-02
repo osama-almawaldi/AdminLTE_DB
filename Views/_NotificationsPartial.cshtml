@@ -1,19 +1,50 @@
-@page
-@model AdminLTE_DB.Views._NotificationsPartial
-
-@{
-    Layout = null;
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["Success"] ✅
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <script>
+        toastr.success('@TempData["Success"]', 'نجاح');
+    </script>
 }
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-<div>
-    
-</div>
-</body>
-</html>
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @TempData["Error"] ❌
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <script>
+        toastr.error('@TempData["Error"]', 'خطأ');
+    </script>
+}
+@if (TempData["Add"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["Add"] ➕
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <script>
+        toastr.success('@TempData["Add"]', 'إضافة');
+    </script>
+}
+@if (TempData["Update"] != null)
+{
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+        @TempData["Update"] 🔄
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <script>
+        toastr.info('@TempData["Update"]', 'تحديث');
+    </script>
+}
+@if (TempData["Remove"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @TempData["Remove"] 🗑️
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <script>
+        toastr.error('@TempData["Remove"]', 'حذف');
+    </script>
+}

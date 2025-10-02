@@ -1,0 +1,32 @@
+@{
+    ViewData["Title"] = "Shop";
+}
+
+<h1 class="text-center mb-4">Welcome to Osama Store 🛍️</h1>
+
+<div class="row text-center">
+    <div class="col-md-3 mb-3">
+        <div class="card shadow p-3">
+            <h5>Employees</h5>
+            <a asp-controller="Employees" asp-action="Index" class="btn btn-dark mt-2">Go</a>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="card shadow p-3">
+            <h5>Categories</h5>
+            <a asp-controller="Categories" asp-action="Index" class="btn btn-dark mt-2">Go</a>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="card shadow p-3">
+            <h5>Products</h5>
+            <a asp-controller="Products" asp-action="Index" class="btn btn-dark mt-2">Go</a>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="card shadow p-3">
+            <h5>Customers</h5>
+            <a asp-controller="CustomersAdmin" asp-action="Index" class="btn btn-dark mt-2">Go</a>
+        </div>
+    </div>
+</div>

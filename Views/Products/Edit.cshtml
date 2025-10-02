@@ -1,0 +1,47 @@
+@model AdminLTE_DB.Models.Product
+
+<h2>تعديل منتج</h2>
+
+<form asp-action="Edit" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label asp-for="ProductName"></label>
+        <input asp-for="ProductName" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Price"></label>
+        <input asp-for="Price" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Stock"></label>
+        <input asp-for="Stock" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CategoryId">الفئة</label>
+        <select asp-for="CategoryId" asp-items="ViewBag.Categories" class="form-control"></select>
+    </div>
+
+    <div class="form-group">
+        <label>الصورة الحالية</label><br />
+        @if (!string.IsNullOrEmpty(Model.ImageUrl))
+        {
+            <img src="@Model.ImageUrl" width="120" class="img-thumbnail" />
+        }
+        else
+        {
+            <p>لا توجد صورة</p>
+        }
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ImageFile">تغيير الصورة</label>
+        <input asp-for="ImageFile" type="file" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-success">تحديث</button>
+    <a asp-action="Index" class="btn btn-secondary">رجوع</a>
+</form>

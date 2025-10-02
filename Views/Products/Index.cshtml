@@ -1,0 +1,176 @@
+@{
+    ViewData["Title"] = "Products CRUD";
+}
+
+<style>
+    .crud-container {
+        padding: 30px;
+    }
+
+    h2 {
+        color: #0b1e3b;
+        margin-bottom: 25px;
+        text-align: center;
+    }
+
+    /* Card for Table */
+    .card-table {
+        background: #fff;
+        border-radius: 16px;
+        padding: 25px;
+        box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+        margin-bottom: 30px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 12px 15px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background: #0b1e3b;
+        color: #fff;
+        border-radius: 8px 8px 0 0;
+    }
+
+    tr:hover {
+        background: #f4faff;
+    }
+
+    /* Buttons */
+    .btn {
+        padding: 8px 16px;
+        border: none;
+        border-radius: 10px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.3s;
+        margin-right: 5px;
+    }
+
+    .btn-add {
+        background: #4fc3f7;
+        color: #0b1e3b;
+    }
+
+    .btn-add:hover {
+        background: #29b6f6;
+    }
+
+    .btn-edit {
+        background: #ffc107;
+        color: #0b1e3b;
+    }
+
+    .btn-edit:hover {
+        background: #ffb300;
+    }
+
+    .btn-delete {
+        background: #e53935;
+        color: #fff;
+    }
+
+    .btn-delete:hover {
+        background: #d32f2f;
+    }
+
+    /* Add/Edit Form Card */
+    .form-card {
+        background: #fff;
+        border-radius: 16px;
+        padding: 25px;
+        box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+        margin-bottom: 25px;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .form-card input {
+        width: 100%;
+        padding: 10px 12px;
+        margin-bottom: 15px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 1rem;
+    }
+
+    .form-card button {
+        width: 100%;
+        margin-top: 10px;
+    }
+</style>
+
+<div class="crud-container">
+
+    <h2>Products Management</h2>
+
+    <!-- Add Button -->
+    <div class="text-center mb-4">
+        <button class="btn btn-add" onclick="toggleAddForm()">➕ Add Product</button>
+    </div>
+
+    <!-- Add/Edit Form (Hidden initially) -->
+    <div class="form-card" id="addForm" style="display:none;">
+        <h4>Add New Product</h4>
+        <form asp-action="Create" method="post">
+            <input type="text" name="Name" placeholder="Product Name" required />
+            <input type="number" name="Price" placeholder="Price" required />
+            <input type="text" name="Category" placeholder="Category" required />
+            <button type="submit" class="btn btn-add">Save Product</button>
+        </form>
+    </div>
+
+    <!-- Products Table -->
+    <div class="card-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Category</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @* مثال للبيانات، استبدلها بالـ Model الخاص بك *@
+                <tr>
+                    <td>1</td>
+                    <td>Laptop</td>
+                    <td>1200</td>
+                    <td>Electronics</td>
+                    <td>
+                        <button class="btn btn-edit">Edit</button>
+                        <button class="btn btn-delete">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>T-Shirt</td>
+                    <td>25</td>
+                    <td>Clothes</td>
+                    <td>
+                        <button class="btn btn-edit">Edit</button>
+                        <button class="btn btn-delete">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    function toggleAddForm() {
+        const form = document.getElementById("addForm");
+        form.style.display = form.style.display === "none" ? "block" : "none";
+        form.scrollIntoView({ behavior: "smooth" });
+    }
+</script>

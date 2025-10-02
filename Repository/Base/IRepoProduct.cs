@@ -1,6 +1,15 @@
-namespace AdminLTE_DB.Repository.Base;
+using AdminLTE_DB.Models;
 
-public interface IRepoProduct
+namespace AdminLTE_DB.Repository.Base
 {
-    
+    public interface IRepoProduct : IRepository<Product>
+    {
+
+
+        IEnumerable<Product> FindAllproducts();
+
+        Product FindByIdproduct(int id);
+        Product FindByUIdproduct(string uid);
+
+    }
 }
